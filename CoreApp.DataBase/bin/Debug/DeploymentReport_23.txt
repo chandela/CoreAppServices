@@ -1,0 +1,38 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Address] (Table)
+       [dbo].[Branch] (Table)
+       [dbo].[ConfigurationSettings] (Table)
+       [dbo].[ConfigurationSettingTemplate] (Table)
+       [dbo].[Country] (Table)
+       [dbo].[User] (Table)
+       [dbo].[UserActivation] (Table)
+       [dbo].[UserAdministrator] (Table)
+       [dbo].[UserAssociate] (Table)
+       [dbo].[DF_Branch_IsActive] (Default Constraint)
+       [dbo].[DF_Branch_CreateDateTime] (Default Constraint)
+       [dbo].[DF_Branch_UpdateDateTime] (Default Constraint)
+       [dbo].[DF_User_IsDeleted] (Default Constraint)
+       [dbo].[DF_User_CreateDateTime] (Default Constraint)
+       [dbo].[DF_User_UpdateDateTime] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[User] (Default Constraint)
+       [dbo].[FK_Branch_Address] (Foreign Key)
+       [dbo].[FK_User_Address] (Foreign Key)
+       [dbo].[FK_User_Branch] (Foreign Key)
+       [dbo].[FK_UserActivation_User] (Foreign Key)
+       [dbo].[FK_UserAdministrator_User] (Foreign Key)
+       [dbo].[FK_UserAssociate_Branch] (Foreign Key)
+       [dbo].[FK_UserAssociate_User] (Foreign Key)
+       [dbo].[UserLogin] (Procedure)
+
+** Supporting actions

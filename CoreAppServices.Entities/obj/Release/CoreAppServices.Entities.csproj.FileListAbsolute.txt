@@ -1,0 +1,12 @@
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\CoreAppServices.Entities.dll.config
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\CoreAppServices.Entities.dll
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\CoreAppServices.Entities.pdb
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\EntityFramework.dll
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\EntityFramework.xml
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\obj\Release\CoreAppServices.Entities.csprojResolveAssemblyReference.cache
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\obj\Release\CoreAppServices.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\obj\Release\CoreAppServices.Entities.dll
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreAppServices.Entities\obj\Release\CoreAppServices.Entities.pdb

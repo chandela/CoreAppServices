@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DynamicDependencyContainer_NET452</name>
+    </assembly>
+    <members>
+        <member name="T:DynamicDependencyContainer.Attributes.DependencyAttribute">
+            <summary>
+            Properties of a class decorated with this attribute will be set by the DynamicUnityContainer
+            when it instantiates the class
+            </summary>
+        </member>
+        <member name="T:DynamicDependencyContainer.Containers.DynamicUnityContainer">
+            <summary>
+            A dependency injection container that dynamically creates data types from interface declarations
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.#ctor">
+            <summary>
+            A dependency injection container that dynamically creates data types from interface declarations
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterType``2">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved. A new type will be 
+            returned each time Resolve() is called, using the default constructor
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterType``2(System.Object[])">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved. The constructor
+            with the matching parameter set (type and order) will be invoked each time Resolve() is called, and a new instance
+            of the object will be returned
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="constructorParameters">The parameters to be passed to the constructor each time the object is resolved</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterType``2(System.Action{``0})">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved. A new instance
+            of the object will be created using the default constructor and returned each time Resovle() is called, 
+            after it is passed to the initializer function
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterType``2(System.Object[],System.Action{``0})">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved. The constructor
+            with the matching parameter set (type and order) will be invoked each time Resolve() is called, and a new instance
+            of the object will be returned after it is passed to the initializer function
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="constructorParameters">The parameters to be passed to the constructor each time the object is resolved</param>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterInstance``1(System.Object)">
+            <summary>
+            Registers the specified instance as the singleton to return when the specified interface is Resolve()'d
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <param name="instance">An instance of an object that implements that interface (should not be null)</param>
+            <remarks>The type must implement the declared interface, or a runtime exception is thrown</remarks>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterLazyInstance``2">
+            <summary>
+            Allows registration of a type to represent an interface, using the singleton pattern.
+            The singleton is not created until the first time it is Resolve()'d
+            Class must have a default constructor
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterLazyInstance``2(System.Object[])">
+            <summary>
+            Allows registration of a type to represent an interface, using the singleton pattern.
+            The singleton is not created until the first time it is Resolve()'d
+            </summary>
+            <param name="constructorParams">The parameters to be passed to the constructor. The class must have a constructor
+            with a parameter list that matches both the type and order of the specified parameters</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterLazyInstance``2(System.Action{``0})">
+            <summary>
+            Allows registration of a type to represent an interface, using the singleton pattern.
+            The singleton is not created until the first time it is Resolve()'d
+            </summary>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterLazyInstance``2(System.Object[],System.Action{``0})">
+            <summary>
+            Allows registration of a type to represent an interface, using the singleton pattern.
+            The singleton is not created until the first time it is Resolve()'d
+            </summary>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+            <param name="constructorParams">The parameters to be passed to the constructor. The class must have a constructor
+            with a parameter list that matches both the type and order of the specified parameters</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.RegisterInterfacesAsDataTypes(System.Collections.Generic.List{System.Type})">
+            <summary>
+            Dynamically creates types from the interface declarations. Limited to interfaces that declare properties only, no methods.
+            Useful for eliminating the need for creating data classes to mirror your interfaces. 
+            </summary>
+            <param name="interfaceTypes">The list of interfaces to be registered as types</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.Resolve``1">
+            <summary>
+            Returns either the singleton that was registered or a new instance of the type that was registered to
+            represent the specified interface. The new instance will be created using whatever constructor and parameters were
+            specified when the type was registered
+            </summary>
+            <typeparam name="T">An interface that was previously registered</typeparam>
+            <returns>An object that implements the interface</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.Resolve(System.Type)">
+            <summary>
+            Returns an instance of the type that was registered to represent the specified interface. How it will be resolved 
+            is determined by how it was originally registered
+            </summary>
+            <param name="type">The type of the interface to be resolved</param>
+            <returns>An object that implements the interface</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.Resolve``1(System.Action{``0})">
+            <summary>
+            Returns an instance of the type that was registered to represent the specified interface. How it will be resolved 
+            is determined by how it was originally registered. Instance will be passed to the initializer function before it is returned
+            </summary>
+            <typeparam name="T">An interface that was previously registered</typeparam>
+            <param name="initializerFunction">A function that accepts the instance as a parameter. Use this function to intialize properties on the instance</param>
+            <returns>An initialized instance of T</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Containers.DynamicUnityContainer.Resolve(System.Type,System.Action{System.Object})">
+            <summary>
+            Returns an instance of the type that was registered to represent the specified interface. How it will be resolved 
+            is determined by how it was originally registered. Instance will be passed to the initializer function before it is returned
+            </summary>
+            <param name="type">The type of the interface to be resolved</param>
+            <param name="initializerFunction">A function that accepts the instance as a parameter. Use this function to intialize properties on the instance</param>
+            <returns>An initialized instance of the specified type</returns>
+        </member>
+        <member name="T:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer">
+            <summary>
+            A dependency injection container that dynamically creates data types from interface declarations
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterType``2">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterType``2(System.Object[])">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved. The constructor
+            with the matching parameter set (type and order) will be invoked each time resolved, and a new instance
+            of the object will be returned
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="constructorParameters">The parameters to be passed to the constructor each time the object is resolved</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterType``2(System.Action{``0})">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved. A new instance
+            of the object will be created using the default constructor and returned each time Resovle() is called, 
+            after it is passed to the initializer function
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterType``2(System.Object[],System.Action{``0})">
+            <summary>
+            Registers the specified type as the type to return when the specified interface is resolved. The constructor
+            with the matching parameter set (type and order) will be invoked each time Resolve() is called, and a new instance
+            of the object will be returned after it is passed to the initializer function
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="constructorParameters">The parameters to be passed to the constructor each time the object is resolved</param>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterInstance``1(System.Object)">
+            <summary>
+            Registers the specified instance as the singleton to return when the specified interface is resolved
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterLazyInstance``2">
+            <summary>
+            Allows registration of a type to represent an interface, using the singleton pattern.
+            The singleton is not created until the first time it is Resolve()'d
+            Class must have a default constructor
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterLazyInstance``2(System.Object[])">
+            <summary>
+            Registers the specified instance as the singleton to return when the specified interface is resolved
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="constructorParams">The parameters to be passed to the constructor. The class must have a constructor
+            with a parameter list that matches both the type and order of the specified parameters</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterLazyInstance``2(System.Action{``0})">
+            <summary>
+            Allows registration of a type to represent an interface, using the singleton pattern.
+            The singleton is not created until the first time it is Resolve()'d
+            </summary>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterLazyInstance``2(System.Object[],System.Action{``0})">
+            <summary>
+            Registers the specified instance as the singleton to return when the specified interface is resolved
+            </summary>
+            <typeparam name="TI">An interface type</typeparam>
+            <typeparam name="TT">A class type that implements the interface</typeparam>
+            <param name="constructorParams">The parameters to be passed to the constructor. The class must have a constructor
+            with a parameter list that matches both the type and order of the specified parameters</param>
+            <param name="initializerFunction">A function that will initialize properties on the new object instance</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IDynamicUnityContainer.RegisterInterfacesAsDataTypes(System.Collections.Generic.List{System.Type})">
+            <summary>
+            Dynamically creates a type from the interface declaration. Limited to interfaces that declare properties only, no methods.
+            Useful to eliminate the need for creating data type classes to match your interfaces. 
+            </summary>
+            <typeparam name="T">An interface that declares only properties, not methods</typeparam>
+        </member>
+        <member name="T:DynamicDependencyContainer.Interfaces.IResolveDependencies">
+            <summary>
+            Specifies methods used to resolved dependencies
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IResolveDependencies.Resolve``1">
+            <summary>
+            Returns an instance of the type that was registered to represent the specified interface. How it will be resolved 
+            is determined by how it was originally registered
+            </summary>
+            <typeparam name="T">An interface that was previously registered</typeparam>
+            <returns>An object that implements the interface</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IResolveDependencies.Resolve``1(System.Action{``0})">
+            <summary>
+            Returns an instance of the type that was registered to represent the specified interface. How it will be resolved 
+            is determined by how it was originally registered. Instance will be passed to the initializer function before it is returned
+            </summary>
+            <typeparam name="T">An interface that was previously registered</typeparam>
+            <param name="initializerFunction">A function that accepts the instance as a parameter. Use this function to intialize properties on the instance</param>
+            <returns>An initialized instance of T</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IResolveDependencies.Resolve(System.Type)">
+            <summary>
+            Returns an instance of the type that was registered to represent the specified interface. How it will be resolved 
+            is determined by how it was originally registered
+            </summary>
+            <param name="type">The type of the interface to be resolved</param>
+            <returns>An object that implements the interface</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Interfaces.IResolveDependencies.Resolve(System.Type,System.Action{System.Object})">
+            <summary>
+            Returns an instance of the type that was registered to represent the specified interface. How it will be resolved 
+            is determined by how it was originally registered. Instance will be passed to the initializer function before it is returned
+            </summary>
+            <param name="type">The type of the interface to be resolved</param>
+            <param name="initializerFunction">A function that accepts the instance as a parameter. Use this function to intialize properties on the instance</param>
+            <returns>An initialized instance of the specified type</returns>
+        </member>
+        <member name="T:DynamicDependencyContainer.Models.LazyInstanceRegisteredType`1">
+            <summary>
+            Allows registration of a type to represent an interface, using the singleton pattern.
+            The singleton is not created until the first time it is requested
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.LazyInstanceRegisteredType`1.#ctor(System.Type,System.Type,DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+            Registers the specified class as the type to be used to represent the specified interface, using the singleton pattern.
+            </summary>
+            <param name="interfaceImplemented">The interface that is being registered</param>
+            <param name="implementingClass">The class that implements the interface</param>
+            <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.LazyInstanceRegisteredType`1.#ctor(System.Type,System.Type,System.Object[],DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+             Registers the specified class as the type to be used to represent the specified interface, using the singleton pattern.
+             </summary>
+             <param name="interfaceImplemented">The interface that is being registered</param>
+             <param name="implementingClass">The class that implements the interface</param>
+             <param name="constructorArguments">The arguments to be passed to the constructor when the singleton is created</param>
+             <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.LazyInstanceRegisteredType`1.#ctor(System.Type,System.Type,System.Action{`0},DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+             Registers the specified class as the type to be used to represent the specified interface, using the singleton pattern.
+             </summary>
+             <param name="interfaceImplemented">The interface that is being registered</param>
+             <param name="implementingClass">The class that implements the interface</param>
+             <param name="initializationFunction">An intialization delegate that will be invoked after the object is constructed. 
+             The object being constructed will be passed to the delegate as a parameter</param>
+             <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.LazyInstanceRegisteredType`1.#ctor(System.Type,System.Type,System.Action{`0},System.Object[],DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+             Registers the specified class as the type to be used to represent the specified interface, using the singleton pattern.
+             </summary>
+             <param name="interfaceImplemented">The interface that is being registered</param>
+             <param name="implementingClass">The class that implements the interface</param>
+             <param name="initializationFunction">An intialization delegate that will be invoked after the object is constructed. 
+             The object being constructed will be passed to the delegate as a parameter</param>
+             <param name="constructorArguments">The arguments to be passed to the constructor when the singleton is created</param>
+             <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredInterfaceType.#ctor(System.Type,System.Type,DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+            Registers the specified class as the type to be used to represent the specified interface
+            </summary>
+            <param name="interfaceImplemented">The interface that is being registered</param>
+            <param name="implementingClass">The class that implements the interface</param>
+            <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredInterfaceType.Resolve">
+            <summary>
+            Returns either the registered instance or a new instance of the registered implementing class
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns>An instance of the implementing class</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredInterfaceType.New">
+            <summary>
+            Invokes the default constructor on the implementing class
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns>An instance of the implementing class</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredInterfaceType.New(System.Object[])">
+            <summary>
+            Invokes the constructor on the implementing class that has a matching list of parameters
+            </summary>
+            <param name="constructorArgs"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns>An instance of the implementing class</returns>
+        </member>
+        <member name="P:DynamicDependencyContainer.Models.RegisteredTypeBase.DependencyResolver">
+            <summary>
+            The object that will be used to resolve dependencies when the Resolve() method is invoked
+            </summary>
+        </member>
+        <member name="P:DynamicDependencyContainer.Models.RegisteredTypeBase.RegisteredInterface">
+            <summary>
+            The interface that was registered
+            </summary>
+        </member>
+        <member name="P:DynamicDependencyContainer.Models.RegisteredTypeBase.ImplementingClass">
+            <summary>
+            The type that was registered to represent that interface
+            </summary>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredTypeBase.#ctor(System.Type,DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="registeredType">The interface type that is being registered</param>
+            <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredTypeBase.CanResolveType(System.Type)">
+            <summary>
+            Determines if this instance can be used to resolve a specified type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.#ctor(System.Type,System.Type,DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+            Registers the specified class as the type to be used to represent the specified interface
+            </summary>
+            <param name="interfaceImplemented">The interface that is being registered</param>
+            <param name="implementingClass">The class that implements the interface</param>
+            <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.#ctor(System.Type,System.Object,DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+            Registers the specified instance as the singleton to be returned when Resolve() is called. Note that does not prevent
+            a caller from creating a new instance by calling one of the New() methods
+            </summary>
+            <param name="interfaceImplemented">The interface that is being registered</param>
+            <param name="instance">An instance of the class that implements the interface</param>
+            <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.#ctor(System.Type,System.Type,System.Object[],DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+             Registers the specified class as the type to be used to represent the specified interface, and
+             specifies the arguments to be passed to the constructor when a new instance is created
+             </summary>
+             <param name="interfaceImplemented">The interface that is being registered</param>
+             <param name="implementingClass">The class that implements the interface</param>
+             <param name="constructorArguments">The arguments to be passed to the constructor when Resolve is called or a new instance is created</param>
+             <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+             <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.#ctor(System.Type,System.Action{`0},DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+            Registers the specified class as the type to be used to represent the specified interface
+            </summary>
+            <param name="implementingClass">The class that implements the interface</param>
+            <param name="initializerFunction">The function that will initialize the object each time it is resolved</param>
+            <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.#ctor(System.Type,System.Action{`0},System.Object[],DynamicDependencyContainer.Interfaces.IResolveDependencies)">
+            <summary>
+             Registers the specified class as the type to be used to represent the specified interface, and
+             specifies the arguments to be passed to the constructor when a new instance is created
+             </summary>
+             <param name="implementingClass">The class that implements the interface</param>
+             <param name="initializationFunction">An intialization delegate that will be invoked after the object is constructed. 
+             The object being constructed will be passed to the delegate as a parameter</param>
+             <param name="constructorArguments">The arguments to be passed to the constructor when Resolve is called or a new instance is created</param>
+             <param name="dependencyResolver">The object that will be used to resolve dependencies when the Resolve() method is invoked</param>
+             <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.Resolve">
+            <summary>
+            Returns either the registered instance or a new instance of the registered implementing class
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns>An instance of the implementing class</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.New">
+            <summary>
+            Invokes the default constructor on the implementing class
+            </summary>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns>An instance of the implementing class</returns>
+        </member>
+        <member name="M:DynamicDependencyContainer.Models.RegisteredType`1.New(System.Object[])">
+            <summary>
+            Invokes the constructor on the implementing class that has a matching list of parameters
+            </summary>
+            <param name="constructorArgs"></param>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <returns>An instance of the implementing class</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column ZipCode in table [dbo].[Address] is currently  NVARCHAR (20) NOT NULL but is being changed to 
+         BIGINT NOT NULL. Data loss could occur.
+       The column [dbo].[User].[DateOfBirth] is being dropped, data loss could occur.
+
+** User actions
+     Alter
+       [dbo].[Address] (Table)
+       [dbo].[User] (Table)
+
+** Supporting actions
+
+The type for column ZipCode in table [dbo].[Address] is currently  NVARCHAR (20) NOT NULL but is being changed to  BIGINT NOT NULL. Data loss could occur.
+The column [dbo].[User].[DateOfBirth] is being dropped, data loss could occur.
+

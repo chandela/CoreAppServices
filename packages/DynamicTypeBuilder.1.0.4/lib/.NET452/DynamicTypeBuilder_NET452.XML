@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DynamicTypeBuilder_NET452</name>
+    </assembly>
+    <members>
+        <member name="T:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1">
+            <summary>
+            The base class for all ConstrainedTypes
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1.Values">
+            <summary>
+            The list of predefined values
+            </summary>
+        </member>
+        <member name="P:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1.Value">
+            <summary>
+            The current value of the ConstrainedType instance
+            </summary>
+        </member>
+        <member name="P:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1.Index">
+            <summary>
+            The numeric value associated with the current Value property
+            </summary>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1.#ctor(System.Collections.Generic.List{`0})">
+            <summary>
+            The base class constructor
+            </summary>
+            <param name="values">A list of the pre-defined values for this type</param>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1.#ctor(System.Collections.Generic.Dictionary{`0,System.Nullable{System.Int32}})">
+            <summary>
+            A constructor that provides for the definition of custom indexes for the predefined values
+            </summary>
+            <param name="values">A dictionary of constrained values and their desired indexes</param>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1.op_Implicit(DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase{`0})~`0">
+            <summary>
+            Implicit operator that allows the direct conversion of an instance of the type to the type of the current Value
+            </summary>
+            <param name="constrainedType">The instance to be converted</param>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.ConstrainedTypeBase`1.ToString">
+            <summary>
+            Converts the Value property to a string
+            </summary>
+            <returns>The ToString() value of the Value property</returns>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.Examples.Fives.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:DynamicTypeBuilder.ConstrainedType.Examples.OneThruFive">
+            <summary>
+            An example class for testing the indexing functionality of the base class
+            </summary>
+        </member>
+        <member name="T:DynamicTypeBuilder.ConstrainedType.Examples.PrimeNumbers">
+            <summary>
+            A representation of the prime numbers below 20
+            This is an example class for usage of the ConstrainedTypeBase 
+            </summary>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.Examples.PrimeNumbers.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="T:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval">
+            <summary>
+            A constrained list of pred-defined repeat interval values.
+            This is a somewhat contrived example that demonstrates how to use the ConstrainedTypeBase class to create
+            an enum-like class that accepts spaces and special characters in the name
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.Daily">
+            <summary>
+            Declare all acceptable values as constants
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.EveryOtherDay">
+            <summary>
+            Declare all acceptable values as constants
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.Weekly">
+            <summary>
+            Declare all acceptable values as constants
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.OnceAWeek">
+            <summary>
+            Declare all acceptable values as constants
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.BiWeekly">
+            <summary>
+            Declare all acceptable values as constants
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.DefinedValues">
+            <summary>
+            Consolidate all acceptable values into a single list
+            </summary>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.#ctor">
+            <summary>
+            The default constructor
+            </summary>
+        </member>
+        <member name="M:DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval.op_Implicit(System.String)~DynamicTypeBuilder.ConstrainedType.Examples.RepeatInterval">
+            <summary>
+            An implicit operator used to allow direct conversion of a string to the ConstrainedType
+            </summary>
+            <param name="interval">A string that is one of the defined values</param>
+        </member>
+        <member name="T:DynamicTypeBuilder.TypeFactory">
+            <summary>
+            This class can be used to create or resolve a class from an interface definition
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.TypeFactory.OutputAssemblyName">
+            <summary>
+            The name of the output assembly without the extension
+            </summary>
+        </member>
+        <member name="F:DynamicTypeBuilder.TypeFactory.OutputDLLName">
+            <summary>
+            The name of the output assembly with the extension
+            </summary>
+        </member>
+        <member name="M:DynamicTypeBuilder.TypeFactory.CreateDynamicAssembly(System.String,System.Collections.Generic.List{System.Type})">
+            <summary>
+            Creates and loads an assembly with the given name that contains a type that implements all the interfaces in the list
+            Note that only properties 
+            </summary>
+            <param name="assemblyName">The name of the assembly</param>
+            <param name="interfaces">A list of interface types</param>
+        </member>
+        <member name="M:DynamicTypeBuilder.TypeFactoryHelper.CreateTypesFromInterfacesInAssemblyModule(System.Collections.Generic.List{System.Type})">
+            <summary>
+            
+            </summary>
+            <param name="interfaces"></param>
+        </member>
+    </members>
+</doc>

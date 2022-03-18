@@ -1,0 +1,5 @@
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreApp.DataBase\bin\Debug\CoreApp.DataBase.dacpac
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreApp.DataBase\bin\Debug\CoreApp.DataBase.dll
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreApp.DataBase\bin\Debug\CoreApp.DataBase.pdb
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreApp.DataBase\obj\Debug\CoreApp.DataBase.dll
+C:\Users\Hari Kumar\source\repos\CoreAppServices\CoreApp.DataBase\obj\Debug\CoreApp.DataBase.pdb
